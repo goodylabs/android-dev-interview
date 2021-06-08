@@ -43,7 +43,7 @@ class DataModule {
         okHttpClient: OkHttpClient,
         moshi: Moshi,
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api")
+        .baseUrl("https://rickandmortyapi.com/api/")
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()

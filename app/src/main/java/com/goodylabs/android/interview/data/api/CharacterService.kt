@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton
 interface CharacterService {
 
-    @GET("/character")
+    @GET("character")
     suspend fun getCharacterContainer(): CharactersContainer
 
 }
