@@ -9,5 +9,17 @@
         android:id="@+id/characterListFragment"
         android:name="com.goodylabs.android.interview.ui.characterlist.CharacterListFragment"
         android:label="Characters"
-        tools:layout="@layout/fragment_character_list" />
+        tools:layout="@layout/fragment_character_list" >
+        <action
+            android:id="@+id/action_characterListFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment"
+            app:popUpTo="@id/characterListFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.goodylabs.android.interview.ui.characterDetails.CharacterDetailsFragment"
+        android:label="CharacterDetailsFragment"
+        tools:layout="@layout/fragment_character_details"/>
+
+
 </navigation>
