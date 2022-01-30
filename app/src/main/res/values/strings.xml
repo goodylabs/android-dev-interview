@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">android-interview</string>
+    <string name="character_image">character image</string>
+    <string name="status">Status:\u0020</string>
+    <string name="location">Location:\u0020</string>
+    <string name="species">Species:\u0020</string>
+    <string name="gender">Gender:\u0020</string>
+    <string name="created">Created:\u0020</string>
+    <string name="url">Url:\u0020</string>
 </resources>
