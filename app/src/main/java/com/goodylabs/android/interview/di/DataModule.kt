@@ -1,6 +1,8 @@
 package com.goodylabs.android.interview.di
 
 import com.goodylabs.android.interview.data.api.CharacterService
+import com.goodylabs.android.interview.data.repositories.CharacterRepository
+import com.goodylabs.android.interview.data.repositories.CharacterRepositoryInterface
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -51,4 +53,8 @@ class DataModule {
     @Singleton
     @Provides
     fun provideCharacterService(retrofit: Retrofit): CharacterService = retrofit.create()
+
+    @Singleton
+    @Provides
+    fun provideCharacterRepository(repo: CharacterRepository): CharacterRepositoryInterface = repo
 }

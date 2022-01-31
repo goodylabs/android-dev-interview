@@ -12,13 +12,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CharacterRepository @Inject constructor(private val characterService: CharacterService) {
+class CharacterRepository @Inject constructor(private val characterService: CharacterService) :
+    CharacterRepositoryInterface {
 
     suspend fun getCharacterContainer() = characterService.getCharacterContainer()
     suspend fun getCharacter(id: Int) = characterService.getCharacter(id)
 
 
-    fun getCharacterList(): LiveData<Resource<Response<CharactersContainer>>> {
+    override fun getCharacterList(): LiveData<Resource<Response<CharactersContainer>>> {
         return liveData(Dispatchers.IO) {
             emit(Resource.loading(data = null))
             try {
@@ -29,7 +30,7 @@ class CharacterRepository @Inject constructor(private val characterService: Char
         }
     }
 
-    fun getCharacterById(id: Int): LiveData<Resource<Response<Character>>> {
+    override fun getCharacterById(id: Int): LiveData<Resource<Response<Character>>> {
         return liveData(Dispatchers.IO) {
             emit(Resource.loading(data = null))
             try {
