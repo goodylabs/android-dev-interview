@@ -8,6 +8,7 @@ import com.goodylabs.android.interview.data.models.Character
 import com.goodylabs.android.interview.data.models.CharactersContainer
 import com.goodylabs.android.interview.data.models.RequestState
 import com.goodylabs.android.interview.data.usecase.GetCharactersUseCase
+import com.goodylabs.android.interview.util.LiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,6 +20,8 @@ class CharacterListViewModel @Inject constructor(
 
     private val _state = MutableLiveData(CharacterListState(isLoading = true))
     val state: LiveData<CharacterListState> = _state
+
+    val goToDetailsEvent = LiveEvent<Int>()
 
     private var lastPage: Int = Int.MAX_VALUE
     private var page: Int = 0
@@ -34,7 +37,7 @@ class CharacterListViewModel @Inject constructor(
     }
 
     fun selectCharacter(character: Character) {
-        //TODO: go to character details
+        goToDetailsEvent.postValue(character.id)
     }
 
     private fun loadNextPage() {

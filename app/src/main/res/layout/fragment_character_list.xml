@@ -17,6 +17,7 @@
             android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textFromRes="@{viewModel.state.errorMsgRes}"
             android:isVisible="@{viewModel.state.errorMsgRes != null}"
             android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toTopOf="@+id/recyclerView"

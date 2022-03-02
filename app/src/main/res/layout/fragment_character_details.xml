@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.goodylabs.android.interview.ui.details.CharacterDetailsViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:isVisible="@{viewModel.state.loading}"
+            tools:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/padding_default"
+            android:isVisible="@{viewModel.state.errorMsg != null}"
+            android:orientation="vertical"
+            tools:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/padding_default"
+                android:textFromRes="@{viewModel.state.errorMsg}"
+                tools:text="Error" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.tryAgain()}"
+                android:text="@string/try_again" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:isVisible="@{viewModel.state.character != null}">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/avatar_details_size"
+                android:layout_height="@dimen/avatar_details_size"
+                android:layout_margin="@dimen/padding_default"
+                android:imageUrl="@{viewModel.state.character.image}"
+                app:layout_constraintBottom_toTopOf="@id/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_default"
+                android:text="@{viewModel.state.character.name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatar"
+                tools:text="Morty" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.state.character.status.toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                tools:text="Alive" />
+
+            <TextView
+                android:id="@+id/currentLocationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_default"
+                android:text="@string/current_location_label"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toStartOf="@id/originLocationLabel"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status" />
+
+            <TextView
+                android:id="@+id/originLocationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_default"
+                android:text="@string/origin_location_label"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/currentLocationLabel"
+                app:layout_constraintTop_toBottomOf="@id/status" />
+
+            <TextView
+                android:id="@+id/currentLocationValue"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.state.character.lastKnownLocation.name}"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@id/currentLocationLabel"
+                app:layout_constraintStart_toStartOf="@id/currentLocationLabel"
+                app:layout_constraintTop_toBottomOf="@id/currentLocationLabel" />
+
+            <TextView
+                android:id="@+id/originLocationValue"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{viewModel.state.character.originLocation.name}"
+                app:layout_constraintEnd_toEndOf="@id/originLocationLabel"
+                app:layout_constraintStart_toStartOf="@id/originLocationLabel"
+                app:layout_constraintTop_toBottomOf="@id/originLocationLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>
