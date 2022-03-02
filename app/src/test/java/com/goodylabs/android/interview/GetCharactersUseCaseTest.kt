@@ -27,7 +27,7 @@ class GetCharactersUseCaseTest {
 
     lateinit var useCase: GetCharactersUseCase
 
-    private val testSuccessResponse = CharactersContainer(PageInfo(123, 7, null, null), emptyList())
+    private val testSuccessResponse = CharactersContainer(PageInfo(123, 7), emptyList())
 
     @Before
     fun setUp() {

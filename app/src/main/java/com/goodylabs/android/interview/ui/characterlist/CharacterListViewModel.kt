@@ -24,7 +24,7 @@ class CharacterListViewModel @Inject constructor(
     val goToDetailsEvent = LiveEvent<Int>()
 
     private var lastPage: Int = Int.MAX_VALUE
-    private var page: Int = 0
+    private var page: Int = 1
 
     init {
         loadNextPage()
@@ -32,7 +32,7 @@ class CharacterListViewModel @Inject constructor(
 
     fun tryToLoadMore() {
         if (_state.value?.isLoading == true ) return // Already loading
-        if (page >= lastPage) return // Last page is reached
+        if (page > lastPage) return // Last page is reached
         loadNextPage()
     }
 
