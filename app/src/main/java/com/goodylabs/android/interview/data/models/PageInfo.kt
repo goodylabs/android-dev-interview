@@ -11,11 +11,6 @@ data class PageInfo(
     val count: Int?,
 
     @Json(name = "pages")
-    val pages: Int?,
+    val pages: Int?
 
-    @Json(name = "next")
-    val next: String?,
-
-    @Json(name = "prev")
-    val prev: String?
 )
