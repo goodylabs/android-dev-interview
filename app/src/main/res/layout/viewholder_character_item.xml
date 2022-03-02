@@ -25,6 +25,7 @@
 
         <TextView
             android:id="@+id/name"
+            style="@style/Theme.Androidinterview.Title2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_default"
@@ -38,6 +39,7 @@
 
         <TextView
             android:id="@+id/status"
+            style="@style/Theme.Androidinterview.Label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_default"
