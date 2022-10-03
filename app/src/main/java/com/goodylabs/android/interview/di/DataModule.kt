@@ -1,7 +1,11 @@
 package com.goodylabs.android.interview.di
 
 import com.goodylabs.android.interview.data.api.CharacterService
+import com.goodylabs.android.interview.data.repositories.CharacterRepository
+import com.goodylabs.android.interview.data.repositories.CharacterRepositoryImpl
+import com.goodylabs.android.interview.data.util.DateJsonAdapter
 import com.squareup.moshi.Moshi
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,39 +20,47 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataModule {
+interface DataModule {
 
-    @Singleton
-    @Provides
-    fun provideMoshi(): Moshi = Moshi.Builder().build()
+    companion object {
 
-    @Singleton
-    @Provides
-    fun provideHttpInterceptor() = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BASIC
-    }
-
-    @Singleton
-    @Provides
-    fun provideGoodyOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
+        @Singleton
+        @Provides
+        fun provideMoshi(): Moshi = Moshi.Builder()
+            .add(DateJsonAdapter())
             .build()
 
-    @Singleton
-    @Provides
-    fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        moshi: Moshi,
-    ): Retrofit = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api/")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .build()
+        @Singleton
+        @Provides
+        fun provideHttpInterceptor() = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
 
-    @Singleton
-    @Provides
-    fun provideCharacterService(retrofit: Retrofit): CharacterService = retrofit.create()
+        @Singleton
+        @Provides
+        fun provideGoodyOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
+            OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .build()
+
+        @Singleton
+        @Provides
+        fun provideRetrofit(
+            okHttpClient: OkHttpClient,
+            moshi: Moshi
+        ): Retrofit = Retrofit.Builder()
+            .baseUrl("https://rickandmortyapi.com/api/")
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+
+        @Singleton
+        @Provides
+        fun provideCharacterService(retrofit: Retrofit): CharacterService = retrofit.create()
+    }
+
+    @Binds
+    fun bindCharacterRepository(repository: CharacterRepositoryImpl): CharacterRepository
 }

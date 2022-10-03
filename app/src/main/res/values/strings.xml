@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">android-interview</string>
+    <string name="character_link">&lt;a href="%s">%s&lt;/a></string>
+    <string name="character_description">%s - %s</string>
+    <string name="character_origin_location_label">Location:</string>
+    <string name="character_last_location_label">Last location:</string>
+    <string name="status_alive">Alive</string>
+    <string name="status_dead">Dead</string>
+    <string name="status_unknown">Unknown</string>
+    <string name="character_details_last_location_label">Last location:</string>
+    <string name="character_details_location_label">Location:</string>
+    <string name="character_details_gender_label">Gender:</string>
+    <string name="character_details_species_label">Species:</string>
+    <string name="character_details_status_label">Status:</string>
+    <string name="character_details_date_label">Created at:</string>
+    <string name="character_details_connection_error_message">Whoops! We\'re having difficulty connecting to the server. Check your connection or try again later.</string>
 </resources>
