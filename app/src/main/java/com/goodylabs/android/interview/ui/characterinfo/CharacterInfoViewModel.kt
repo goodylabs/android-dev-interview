@@ -23,7 +23,8 @@ class CharacterInfoViewModel @Inject constructor(
         var status: String? = null,
         var gender: String? = null,
         var species: String? = null,
-        var created: String? = null
+        var created: String? = null,
+        var url: String? = null
     )
 
     private var _uiState = MutableLiveData(UiState())
@@ -41,7 +42,8 @@ class CharacterInfoViewModel @Inject constructor(
                         status = character.status,
                         gender = character.gender,
                         species = character.species,
-                        created = character.created
+                        created = character.created,
+                        url = character.url
                     )
                 )
                 Log.d(TAG, "getCharacterInfo: ${response.body()!!}")

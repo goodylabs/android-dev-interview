@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-interview</string>
+    <string name="hyperlink"><a href="https://guildwars2.com">%2$s</a></string>
 </resources>
