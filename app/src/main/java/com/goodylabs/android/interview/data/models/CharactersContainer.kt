@@ -12,5 +12,5 @@ data class CharactersContainer(
 
     //TODO Change Any to correct serializable character object based on API documentation
     @Json(name = "results")
-    val results: List<Any>?
+    val results: List<Character>?
 )

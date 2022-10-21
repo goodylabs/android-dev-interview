@@ -1,11 +1,10 @@
 package com.goodylabs.android.interview.data.repositories
 
-import com.goodylabs.android.interview.data.api.CharacterService
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.goodylabs.android.interview.data.models.Character
+import com.goodylabs.android.interview.data.models.CharactersContainer
+import retrofit2.Response
 
-@Singleton
-class CharacterRepository @Inject constructor(private val characterService: CharacterService) {
-
-    suspend fun getCharacterContainer() = characterService.getCharacterContainer()
+interface CharacterRepository {
+    suspend fun getAllCharacters(page: Int): Response<CharactersContainer>
+    suspend fun getCharacter(id: Int): Response<Character>
 }
