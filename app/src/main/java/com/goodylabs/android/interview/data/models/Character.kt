@@ -41,7 +41,4 @@ data class Character(
 
     @Json(name = "created")
     val created: String,
-
-    @Transient
-    var bitmap: Bitmap? = null
 )
