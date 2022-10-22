@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.goodylabs.android.interview.data.repositories.CharacterRepository
+import com.goodylabs.android.interview.util.DateFormatter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,7 +24,7 @@ class CharacterInfoViewModel @Inject constructor(
         var status: String,
         var gender: String,
         var species: String,
-        var created: String,
+        var created: String?,
         var url: String
     )
 
@@ -42,7 +43,7 @@ class CharacterInfoViewModel @Inject constructor(
                         status = character.status,
                         gender = character.gender,
                         species = character.species,
-                        created = character.created,
+                        created = DateFormatter.format(character.created),
                         url = character.url
                     )
                 )

@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.goodylabs.android.interview.databinding.FragmentCharacterInfoBinding
-import com.goodylabs.android.interview.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,7 +44,7 @@ class CharacterInfoFragment : Fragment() {
                 characterGender.text = it.gender
                 characterSpecies.text = it.species
                 characterStatus.text = it.status
-                characterCreated.text = DateFormatter.format(it.created)
+                characterCreated.text = it.created
             }
         }
 
