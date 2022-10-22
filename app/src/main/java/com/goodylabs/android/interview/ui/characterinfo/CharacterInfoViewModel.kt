@@ -18,16 +18,16 @@ class CharacterInfoViewModel @Inject constructor(
 ) : ViewModel() {
 
     data class UiState(
-        var avatar: String? = null,
-        var name: String? = null,
-        var status: String? = null,
-        var gender: String? = null,
-        var species: String? = null,
-        var created: String? = null,
-        var url: String? = null
+        var avatar: String,
+        var name: String,
+        var status: String,
+        var gender: String,
+        var species: String,
+        var created: String,
+        var url: String
     )
 
-    private var _uiState = MutableLiveData(UiState())
+    private var _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> get() = _uiState
 
     fun getCharacterInfo(id: Int?) = viewModelScope.launch {

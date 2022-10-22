@@ -27,8 +27,6 @@ class CharacterListViewModel @Inject constructor(
     private var _characterList = MutableLiveData<MutableList<Character>>(mutableListOf())
     val characterList: LiveData<MutableList<Character>> get() = _characterList
 
-
-
     init {
         setupUi()
     }

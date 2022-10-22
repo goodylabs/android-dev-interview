@@ -1,6 +1,5 @@
 package com.goodylabs.android.interview.data.models
 
-import android.graphics.Bitmap
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
