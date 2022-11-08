@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">android-interview</string>
+    <string name="status">Status</string>
+    <string name="characterName">Character name</string>
+    <string name="gender">Gender</string>
+    <string name="origin">Origin</string>
+    <string name="location">Location</string>
+    <string name="episodes">Episodes</string>
 </resources>
