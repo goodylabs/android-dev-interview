@@ -44,13 +44,16 @@ Create a character list using the RecyclerView
 
 Create a separate screen with detailed information of the selected character
 + add the correct API endpoint and call it to get the data (don't just rely on data from the list view)
-+ The layout must include at least avatar, full name, gender, species, status, nicely formatted creation date and a clickable link to the character's URL. Again the nicer it looks, the better but we don't expect you to spend half a day on it. All we want to see is how well you can play with positioning elements of a layout
++ The layout must include at least avatar,
++ full name, gender, species, status, nicely formatted creation date and a clickable link to the character's URL.
++ Again the nicer it looks, the better but we don't expect you to spend half a day on it.
++ All we want to see is how well you can play with positioning elements of a layout
 
 ---
 **Part 3 (OPTIONAL):**
 
-This part is just as optional as are unit tests 😉. You can skip it if you thinks tests are a waste of time...
-
+This part is just as optional as are unit tests 😉.
+You can skip it if you thinks tests are a waste of time...
 Configure and add a few unit tests that will cover the view models
 
 ---

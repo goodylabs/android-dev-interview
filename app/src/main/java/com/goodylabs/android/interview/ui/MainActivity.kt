@@ -27,13 +27,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeNavController() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
-
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.mainFragmentToolbar.setupWithNavController(navController, appBarConfiguration)
-
         navController.addOnDestinationChangedListener { _, _, _ -> hideSoftInput() }
     }
 }

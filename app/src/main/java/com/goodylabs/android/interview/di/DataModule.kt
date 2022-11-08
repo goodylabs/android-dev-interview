@@ -24,6 +24,8 @@ class DataModule {
 
     @Singleton
     @Provides
+    // using a custom interceptor to catch httpErrors would be better
+    // not sure whether I should change that (wasn't specified)
     fun provideHttpInterceptor() = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BASIC
     }
